@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HotCell" id="usd-Lz-iF6" customClass="ZMHotCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="120" height="150"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="120" height="150"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="124e1241241241431243" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D68-Ci-uXc">
+                        <rect key="frame" x="8" y="101" width="104" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KHg-rq-IYO">
+                        <rect key="frame" x="11" y="0.0" width="100" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="KHg-rq-IYO" secondAttribute="height" multiplier="1:1" id="hEX-Lf-ZzP"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="¥5.8" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KFC-aa-lxW">
+                        <rect key="frame" x="39" y="121" width="42" height="21"/>
+                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                        <color key="textColor" red="0.81176470590000005" green="0.074509803920000006" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bgb-de-eI8">
+                        <rect key="frame" x="74" y="126" width="42" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="券后" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcP-gw-vvQ">
+                        <rect key="frame" x="11" y="119" width="30" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="KHg-rq-IYO" secondAttribute="bottom" constant="50" id="A6c-0w-hg7"/>
+                <constraint firstItem="KFC-aa-lxW" firstAttribute="top" secondItem="KHg-rq-IYO" secondAttribute="bottom" constant="21" id="CZe-h3-X3J"/>
+                <constraint firstItem="Bgb-de-eI8" firstAttribute="centerY" secondItem="KFC-aa-lxW" secondAttribute="centerY" constant="0.5" id="CdX-Nm-PcC"/>
+                <constraint firstItem="KHg-rq-IYO" firstAttribute="centerX" secondItem="usd-Lz-iF6" secondAttribute="centerX" id="LEv-kv-N18"/>
+                <constraint firstAttribute="bottom" secondItem="D68-Ci-uXc" secondAttribute="bottom" constant="28" id="Sui-PO-pez"/>
+                <constraint firstItem="KFC-aa-lxW" firstAttribute="leading" secondItem="FcP-gw-vvQ" secondAttribute="trailing" constant="1" id="VL8-iA-90z"/>
+                <constraint firstItem="D68-Ci-uXc" firstAttribute="top" secondItem="KHg-rq-IYO" secondAttribute="bottom" constant="1" id="WEJ-jE-GCu"/>
+                <constraint firstItem="FcP-gw-vvQ" firstAttribute="leading" secondItem="usd-Lz-iF6" secondAttribute="leading" constant="8" id="WnJ-ua-WPM"/>
+                <constraint firstItem="D68-Ci-uXc" firstAttribute="leading" secondItem="usd-Lz-iF6" secondAttribute="leading" constant="8" id="eVw-KY-8X2"/>
+                <constraint firstItem="KFC-aa-lxW" firstAttribute="centerY" secondItem="FcP-gw-vvQ" secondAttribute="centerY" id="gts-MQ-CaJ"/>
+                <constraint firstItem="KHg-rq-IYO" firstAttribute="top" secondItem="usd-Lz-iF6" secondAttribute="top" id="jfv-6B-E71"/>
+                <constraint firstAttribute="trailing" secondItem="D68-Ci-uXc" secondAttribute="trailing" constant="8" id="kZl-hU-Aw2"/>
+                <constraint firstItem="Bgb-de-eI8" firstAttribute="leading" secondItem="KFC-aa-lxW" secondAttribute="trailing" constant="5" id="nUN-aD-GBW"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="NyR-fl-zP3"/>
+            <connections>
+                <outlet property="beforMoneyLabel" destination="Bgb-de-eI8" id="t5x-br-aaj"/>
+                <outlet property="inforLabel" destination="D68-Ci-uXc" id="s8y-3N-2RM"/>
+                <outlet property="moneyLabel" destination="KFC-aa-lxW" id="d8T-Hi-wPx"/>
+                <outlet property="photo" destination="KHg-rq-IYO" id="FG6-Lg-E15"/>
+            </connections>
+            <point key="canvasLocation" x="813" y="521"/>
+        </collectionViewCell>
+    </objects>
+</document>

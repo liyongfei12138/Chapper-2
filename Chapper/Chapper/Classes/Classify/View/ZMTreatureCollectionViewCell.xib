@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TreatureCollectionCell" id="MIk-8w-UPl" customClass="ZMTreatureCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="券后" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yY-ZZ-61m">
+                        <rect key="frame" x="8" y="164.5" width="25" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="人已买" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13i-sj-1GE">
+                        <rect key="frame" x="105" y="154.5" width="37" height="33"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$14.9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y3e-LV-SJn">
+                        <rect key="frame" x="36" y="159.5" width="52.5" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <color key="textColor" red="0.81176470590000005" green="0.074509803920000006" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Py-3J-arT">
+                        <rect key="frame" x="67" y="154.5" width="36" height="33"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="心底移动电脑2代（i3 64gb）颜色随机" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtX-eo-Wdi">
+                        <rect key="frame" x="8" y="121" width="134" height="33.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V4U-QR-4Rf">
+                        <rect key="frame" x="115" y="0.0" width="35" height="35"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ekP-X0-Ey2">
+                        <rect key="frame" x="20" y="6" width="110" height="110"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="ekP-X0-Ey2" secondAttribute="height" multiplier="1:1" id="C3P-MD-2nf"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Y3e-LV-SJn" firstAttribute="top" secondItem="mtX-eo-Wdi" secondAttribute="bottom" constant="5" id="5Dk-st-vSc"/>
+                <constraint firstItem="1Py-3J-arT" firstAttribute="top" secondItem="mtX-eo-Wdi" secondAttribute="bottom" id="7sC-ww-ZMh"/>
+                <constraint firstItem="ekP-X0-Ey2" firstAttribute="top" secondItem="MIk-8w-UPl" secondAttribute="top" constant="6" id="9jN-cp-47k"/>
+                <constraint firstAttribute="trailing" secondItem="13i-sj-1GE" secondAttribute="trailing" constant="8" id="BwW-6E-BYJ"/>
+                <constraint firstAttribute="trailing" secondItem="mtX-eo-Wdi" secondAttribute="trailing" constant="8" id="F7o-Ja-LcE"/>
+                <constraint firstItem="ekP-X0-Ey2" firstAttribute="centerX" secondItem="MIk-8w-UPl" secondAttribute="centerX" id="J8Y-Ha-qtW"/>
+                <constraint firstItem="Y3e-LV-SJn" firstAttribute="centerY" secondItem="5yY-ZZ-61m" secondAttribute="centerY" id="JUL-ue-diL"/>
+                <constraint firstItem="13i-sj-1GE" firstAttribute="leading" secondItem="1Py-3J-arT" secondAttribute="trailing" constant="2" id="Jix-63-0xj"/>
+                <constraint firstItem="ekP-X0-Ey2" firstAttribute="leading" secondItem="MIk-8w-UPl" secondAttribute="leading" constant="20" id="Lsq-q1-Xa8"/>
+                <constraint firstItem="mtX-eo-Wdi" firstAttribute="top" secondItem="ekP-X0-Ey2" secondAttribute="bottom" constant="5" id="PXP-Pm-QGy"/>
+                <constraint firstItem="1Py-3J-arT" firstAttribute="centerY" secondItem="5yY-ZZ-61m" secondAttribute="centerY" id="SOW-aa-Vxl"/>
+                <constraint firstAttribute="trailing" secondItem="ekP-X0-Ey2" secondAttribute="trailing" constant="20" id="Td0-e5-ATK"/>
+                <constraint firstItem="mtX-eo-Wdi" firstAttribute="leading" secondItem="MIk-8w-UPl" secondAttribute="leading" constant="8" id="aN3-uI-2eL"/>
+                <constraint firstItem="Y3e-LV-SJn" firstAttribute="centerY" secondItem="5yY-ZZ-61m" secondAttribute="centerY" id="kWt-oc-sDp"/>
+                <constraint firstItem="13i-sj-1GE" firstAttribute="centerY" secondItem="5yY-ZZ-61m" secondAttribute="centerY" id="lvm-8C-aF9"/>
+                <constraint firstItem="13i-sj-1GE" firstAttribute="top" secondItem="mtX-eo-Wdi" secondAttribute="bottom" id="pJj-VD-k9A"/>
+                <constraint firstItem="Y3e-LV-SJn" firstAttribute="leading" secondItem="5yY-ZZ-61m" secondAttribute="trailing" constant="3" id="pdQ-is-zWq"/>
+                <constraint firstItem="5yY-ZZ-61m" firstAttribute="leading" secondItem="MIk-8w-UPl" secondAttribute="leading" constant="8" id="vz1-8g-lr7"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="WGN-lT-shO"/>
+            <size key="customSize" width="161" height="142"/>
+            <connections>
+                <outlet property="footImage" destination="V4U-QR-4Rf" id="fif-12-Gkp"/>
+                <outlet property="inforLabel" destination="mtX-eo-Wdi" id="I1C-MI-8fE"/>
+                <outlet property="personLabel" destination="1Py-3J-arT" id="tl9-Kq-p3N"/>
+                <outlet property="photo" destination="ekP-X0-Ey2" id="bK3-XM-3mU"/>
+                <outlet property="positionLabel" destination="13i-sj-1GE" id="NV9-UH-Dxo"/>
+                <outlet property="progressLabel" destination="Y3e-LV-SJn" id="cQV-u3-ZDH"/>
+            </connections>
+            <point key="canvasLocation" x="313" y="272"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>icon</key>
+		<string>icon_wd_qbdd</string>
+		<key>name</key>
+		<string>订单查询</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>icon_wd_wdsc</string>
+		<key>name</key>
+		<string>我的收藏</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>icon_wd_cjwt</string>
+		<key>name</key>
+		<string>常见问题</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>icon_wd_qlhc</string>
+		<key>name</key>
+		<string>清除缓存</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>icon_wd_gy</string>
+		<key>name</key>
+		<string>关于</string>
+	</dict>
+</array>
+</plist>

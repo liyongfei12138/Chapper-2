@@ -1,0 +1,86 @@
+//
+//  PrefixHeader.pch
+//  Chapper
+//
+//  Created by lixin on 17/8/1.
+//  Copyright © 2017年 lixin. All rights reserved.
+//
+
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+//转换原始图片
+#import "UIImage+ZMNavOriImage.h"
+//frame
+#import "UIView+Frame.h"
+//nav
+#import "UINavigationBar+Awesome.h"
+//网络请求工具类
+#import "ZMHttpTool.h"
+
+#import "UIImage+Image.h"
+//打印
+/** 相当于log */
+#define ZMLOG(...) NSLog(__VA_ARGS__)
+
+#define NUMBERS @"0123456789"
+
+#define kDeviceWidth  [UIScreen mainScreen].bounds.size.width
+#define kDeviceHeight [UIScreen mainScreen].bounds.size.height
+// 主页数据
+#define ZMMainUrl @"https://taoboo.kunleen.com/coupon.webapi//api/deploy/carousel"
+// hotkey数据
+#define ZMHotSearchUrl @"https://taoboo.kunleen.com/coupon.webapi/api/deploy/search_keyword"
+// 商品数据
+#define ZMItemUrl @"https://taoboo.kunleen.com/coupon.webapi/api/deploy/getItem"
+// 常见问题Url
+#define FAQUrl @"http://onepay.kunleen.com/images/onepay/html/Coupon-FAQ.html"
+// 关于Url
+#define AboutUrl @"http://onepay.kunleen.com/images/onepay/html/about_coupon_3.html"
+#define kSmallGray [UIColor colorWithRed:241.0/255.0 green:241.0/255.0 blue:241.0/255.0 alpha:1.0f]
+#define kSmallRed [UIColor colorWithRed:251.0/255.0 green:35.0/255.0 blue:67.0/255.0 alpha:1.0f]
+//#define kSmallGray [UIColor colorWithRed:240.0/255.0 green:241.0/255.0 blue:242.0/255.0 alpha:1.0f]
+
+#define NAVBAR_CHANGE_POINT 60
+
+#define collectedHeight ((float)(kDeviceWidth) * 0.4 - 0.5)/ 4.0 * 5.0
+// 轮播图高
+#define KCarouselHeight [UIScreen mainScreen].bounds.size.width * 0.42
+// 按钮图高
+#define KButtonHeight [UIScreen mainScreen].bounds.size.width * 0.25 * 1.11 
+// RGB颜色
+#define ZMColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+// 随机色
+#define ZMRandomColor ZMColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
+// 搜索框背景色
+
+//设备判断
+#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_RETINA ([[UIScreen mainScreen] scale] >= 2.0)
+
+#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
+#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+#define SCREEN_MAX_LENGTH (MAX(SCREEN_WIDTH, SCREEN_HEIGHT))
+#define SCREEN_MIN_LENGTH (MIN(SCREEN_WIDTH, SCREEN_HEIGHT))
+
+#define IS_IPHONE_4_OR_LESS (IS_IPHONE && SCREEN_MAX_LENGTH < 568.0)
+#define IS_IPHONE_5 (IS_IPHONE && SCREEN_MAX_LENGTH == 568.0)
+#define IS_IPHONE_6 (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
+#define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
+
+#define DCBGColor RGB(245,245,245)
+
+#define PFR [[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0 ? @"PingFangSC-Regular" : @"PingFang SC"
+
+#define PFR20Font [UIFont fontWithName:PFR size:20];
+#define PFR18Font [UIFont fontWithName:PFR size:18];
+#define PFR16Font [UIFont fontWithName:PFR size:16];
+#define PFR15Font [UIFont fontWithName:PFR size:15];
+#define PFR14Font [UIFont fontWithName:PFR size:14];
+#define PFR13Font [UIFont fontWithName:PFR size:13];
+#define PFR12Font [UIFont fontWithName:PFR size:12];
+#define PFR11Font [UIFont fontWithName:PFR size:11];
+#define PFR10Font [UIFont fontWithName:PFR size:10];
+
+#endif /* PrefixHeader_pch */

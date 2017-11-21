@@ -1,0 +1,97 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - AlibabaAuthSDK (1.1.0.32):
+    - BCUserTrack
+    - mtop
+    - SecurityGuardSDK
+    - SGMain
+    - SGSecurityBody
+  - AlibcLinkPartnerSDK (1.1.1.2):
+    - UTDID
+  - AlibcTradeSDK (3.1.1.206):
+    - AlibabaAuthSDK
+    - AlibcLinkPartnerSDK
+    - AlipaySDK (= 2.0.0-bc)
+    - BCUserTrack
+    - mtop
+    - SecurityGuardSDK
+    - SGMain
+    - TUnionTradeSDK
+  - AlipaySDK (2.0.0-bc)
+  - BCUserTrack (5.1.0.9):
+    - UTDID
+  - BHInfiniteScrollView (1.5.3):
+    - SDWebImage
+  - Masonry (1.1.0)
+  - MJCSegmentInterface (1.8.7)
+  - MJExtension (3.0.13)
+  - mtop (2.0.3):
+    - SecurityGuardSDK
+    - SGMain
+    - SGSecurityBody
+  - PYSearch (0.8.5)
+  - SDWebImage (4.1.2):
+    - SDWebImage/Core (= 4.1.2)
+  - SDWebImage/Core (4.1.2)
+  - SecurityGuardSDK (5.1.94)
+  - SGMain (5.1.94):
+    - SecurityGuardSDK (= 5.1.94)
+  - SGSecurityBody (5.1.29):
+    - SecurityGuardSDK (>= 5.1.94)
+    - SGMain (>= 5.1.94)
+  - SVProgressHUD (2.2.2)
+  - TUnionTradeSDK (1.3.3)
+  - UMengAnalytics-NO-IDFA (4.2.5)
+  - UTDID (1.0.0)
+
+DEPENDENCIES:
+  - AFNetworking (~> 3.0)
+  - AlibcTradeSDK
+  - BHInfiniteScrollView
+  - Masonry
+  - MJCSegmentInterface
+  - MJExtension
+  - PYSearch
+  - SDWebImage (~> 4.0)
+  - SVProgressHUD
+  - UMengAnalytics-NO-IDFA
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AlibabaAuthSDK: b5d7c1964f195c1182d9410e3158c469d25876fa
+  AlibcLinkPartnerSDK: 3308e1bccf0776a28bb697f0da6e1befe029ee12
+  AlibcTradeSDK: 7a17d15eb13182a6e96aeab0c73b6d4d2bc5b00a
+  AlipaySDK: a40a4099b24328d90d7ba4fb67f6ce753d7fa2c7
+  BCUserTrack: 684f468b8143be7a2ed10a8c449fd959b2a3a099
+  BHInfiniteScrollView: 1ce1a2ebc0cc32bbed15c466304d8fcf6539f5e5
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJCSegmentInterface: 22704409da99a0ee9fc1c5a963c564417e4a84f2
+  MJExtension: 5932755f451458eefa24239358817f8d291240c7
+  mtop: 1513ec32f69174bd7c95a07d393f26ef1cad3af7
+  PYSearch: 3eca6a4736700076565cd7d3a64343aff8397eea
+  SDWebImage: cb6f9f266a9977741efcbc21e618e8be3734c774
+  SecurityGuardSDK: 05f6d782189160f2b23b731eed5cb314ce584855
+  SGMain: 8a3008d8a709259d4868f78ae3265659e58e4416
+  SGSecurityBody: 098c981416d0f04faa605642e2da3bb556419f73
+  SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
+  TUnionTradeSDK: 4d49ba32bb2a87dd3fcc644a80b0cd0d706a1e0b
+  UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
+  UTDID: 05c4737c8cf5c210e86d0235570816ed00e023e8
+
+PODFILE CHECKSUM: 8a16b9b3c436b15cca7d3cf3a2c27f5eb08a096e
+
+COCOAPODS: 1.3.1
