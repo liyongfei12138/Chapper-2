@@ -28,4 +28,6 @@
 /** 领卷中心 **/
 @property (nonatomic, strong) NSString *promotionURL;
 
+/** 商品ID **/
+@property (nonatomic, strong) NSString *itemId;
 @end

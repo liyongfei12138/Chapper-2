@@ -16,6 +16,7 @@
 #import <MJExtension.h>
 #import <UIImageView+WebCache.h>
 #import <SVProgressHUD.h>
+#import "ZMTodayItem.h"
 @interface ZMSearchViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 // 数据数组
@@ -23,6 +24,9 @@
 @property (nonatomic, strong) UICollectionView *collectionView;
 // 数据加载页数
 @property (nonatomic, assign) NSInteger index;
+
+// 商品Id 商品的唯一识别方式
+@property (nonatomic, strong) NSString *itemId;
 @end
 
 @implementation ZMSearchViewController
@@ -174,20 +178,17 @@
 {
     return 0.5;
 }
-//-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
-//{
-//    return 1.0;
-//}
-//
-//-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
-//{
-//    return 1.0;
-//}
+
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ZMProductViewController *goodVC = [[ZMProductViewController alloc] init];
     goodVC.lotterArr = _searchArr[indexPath.row];
-//    goodVC.webUrl = self.searchArr
+    
+    
+    ZMTodayItem *item = self.searchArr[indexPath.row];
+    self.itemId = item.itemId;
+    goodVC.itemId = self.itemId;
+    
     NSLog(@"<测试>按钮点击");
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:goodVC];
     
@@ -198,7 +199,8 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:_keyWorld forKey:@"query_data"];
-    [parameters setObject:[NSNumber numberWithInt:_poseType] forKey:@"query_type"];
+//    [parameters setObject:[NSNumber numberWithInt:_poseType] forKey:@"page_order"];
+    [parameters setObject:[NSNumber numberWithInt:2] forKey:@"query_type"];
     [parameters setObject:[NSNumber numberWithInt:20] forKey:@"page_size"];
      [parameters setObject:[NSNumber numberWithInt:_index] forKey:@"page_index"];
     [ZMHttpTool post:ZMItemUrl params:parameters success:^(id responseObj) {

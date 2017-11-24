@@ -14,8 +14,11 @@
 #import <UIImageView+WebCache.h>
 #import <SVProgressHUD.h>
 #import <MJExtension.h>
+#import "ZMTodayItem.h"
 @interface ZMDeserveViewController () <UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) NSMutableArray *dataArr;
+// 商品Id 商品的唯一识别方式
+@property (nonatomic, strong) NSString *itemId;
 
 @end
 
@@ -140,7 +143,12 @@
 {
     ZMProductViewController *goodVC = [[ZMProductViewController alloc] init];
     goodVC.lotterArr = _dataArr[indexPath.row];
-    NSLog(@"<测试>按钮点击");
+    
+    ZMTodayItem *item = self.dataArr[indexPath.row];
+    self.itemId = item.itemId;
+    goodVC.itemId = self.itemId;
+    NSLog(@"%@",self.itemId);
+    
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:goodVC];
     
     [self presentViewController:nav animated:NO completion:nil];

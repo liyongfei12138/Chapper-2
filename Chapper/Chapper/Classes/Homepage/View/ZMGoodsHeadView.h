@@ -28,6 +28,7 @@
 // 今日商品数组
 @property (nonatomic,strong) NSMutableArray *todayArr;
 
-//@property (nonatomic,strong) UIViewController *own;
+// 收藏数组
+@property (nonatomic, strong) NSMutableArray *collectClickArr;
 
 @end

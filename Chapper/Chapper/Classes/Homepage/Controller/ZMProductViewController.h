@@ -13,10 +13,14 @@
 // 主页商品ID
 @property (nonatomic, strong) NSString *toolID;
 
-// 分类商品数组
-@property (nonatomic,strong) NSMutableArray *lotterArr;
+// // 分类商品数组
+@property (nonatomic, strong) NSMutableArray *lotterArr;
 
 // 今日商品数组
-@property (nonatomic,strong) NSMutableArray *todayArr;
+@property (nonatomic, strong) NSMutableArray *todayArr;
+
+
+// 今日商品数组和分类商品数组 ID
+@property (nonatomic, strong) NSString *itemId;
 
 @end

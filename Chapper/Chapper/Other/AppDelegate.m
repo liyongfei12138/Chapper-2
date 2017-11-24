@@ -52,6 +52,11 @@
     [[AlibcTradeSDK sharedInstance] setIsForceH5:NO];
     
     // 友盟
+//    5a162916f43e4861fd00012e
+    UMConfigInstance.appKey = @"5a162916f43e4861fd00012e";
+    UMConfigInstance.channelId = @"App Store";
+    
+    [MobClick startWithConfigure:UMConfigInstance];
     
     // 设置启动图片的停留时间
     // 启动图片延时: 1秒

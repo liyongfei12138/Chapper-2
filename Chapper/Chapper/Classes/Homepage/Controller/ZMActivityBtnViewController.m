@@ -21,6 +21,8 @@
 @property (nonatomic, strong) UITableView *tableV;
 // 刷新页数
 @property (nonatomic, assign) NSInteger index;
+// 商品Id 商品的唯一识别方式
+@property (nonatomic, strong) NSString *itemId;
 @end
 
 @implementation ZMActivityBtnViewController
@@ -144,8 +146,8 @@
         // 转换类型
         CGFloat finalP = [item.finalPrice floatValue];
         CGFloat beforP = [item.price floatValue];
-        int couponP = beforP - finalP;
-        cell.couponLable.text = [NSString stringWithFormat:@"¥%d",couponP];
+        CGFloat couponP = beforP - finalP;
+        cell.couponLable.text = [NSString stringWithFormat:@"¥%.0f",couponP];
         
     }
     return cell;
@@ -158,6 +160,12 @@
     
     ZMProductViewController *goodVC = [[ZMProductViewController alloc] init];
     goodVC.todayArr = self.todayArr[indexPath.row];
+    
+    ZMTodayItem *item = self.todayArr[indexPath.row];
+    self.itemId = item.itemId;
+    goodVC.itemId = self.itemId;
+    NSLog(@"%@",self.itemId);
+    
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:goodVC];
     [self presentViewController:nav animated:YES completion:nil];
 //    [self.navigationController pushViewController:nav animated:YES];

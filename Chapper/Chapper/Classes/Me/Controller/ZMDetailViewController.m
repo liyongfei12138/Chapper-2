@@ -22,7 +22,7 @@
 #import <AlibcTradeSDK/AlibcTradeSDK.h>
 #import <UIImageView+WebCache.h>
 #import "ZMCollectViewController.h"
-
+#import <UMMobClick/MobClick.h>
 @interface ZMDetailViewController () <UITableViewDataSource,UITableViewDelegate>
 
 // 懒加载菜单数组
@@ -186,8 +186,8 @@
              self.label.centerX = self.image.centerX;
              [self.tableV reloadData];
              
-//             [MobClick profileSignInWithPUID:[session getUser].openId];
-//             [MobClick event:@"ChapLogin"];
+             [MobClick profileSignInWithPUID:[session getUser].openId];
+             [MobClick event:@"ChapLogin"];
          }
                        failureCallback:^(ALBBSession *session, NSError *error)
          {
@@ -301,7 +301,7 @@
     else if (indexPath.section == 1) {
     // 收藏
     ZMCollectViewController *collectVC = [[ZMCollectViewController alloc] init];
-    ZMWebNavigationController *collectNav = [[ZMWebNavigationController alloc] initWithRootViewController:collectVC];
+    UINavigationController *collectNav = [[UINavigationController alloc] initWithRootViewController:collectVC];
     // 相关问题
     ZMWebViewController *faqVC = [[ZMWebViewController alloc] initWithWebView];
         faqVC.webUrl = FAQUrl;

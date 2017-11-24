@@ -1,16 +1,14 @@
 //
-//  ZMTodayItem.h
+//  ZMCollectItem.h
 //  Chapper
 //
-//  Created by liyongfei on 2017/11/10.
+//  Created by liyongfei on 2017/11/23.
 //  Copyright © 2017年 liyongfei. All rights reserved.
-// **********
-// 优选模型
-// **********
+//
 
 #import <Foundation/Foundation.h>
 
-@interface ZMTodayItem : NSObject
+@interface ZMCollectItem : NSObject
 
 /** 图片 **/
 @property (nonatomic, strong) NSString *itemImage;
@@ -24,12 +22,10 @@
 /** 之前价格 **/
 @property (nonatomic, strong) NSString *price;
 
-/** 人数 **/
-@property (nonatomic, strong) NSString *sellAmount;
+/** 商品ID **/
+@property (nonatomic, strong) NSString *itemId;
 
 /** 领卷中心 **/
 @property (nonatomic, strong) NSString *promotionURL;
 
-/** 商品ID **/
-@property (nonatomic, strong) NSString *itemId;
 @end

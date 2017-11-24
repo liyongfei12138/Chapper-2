@@ -18,6 +18,9 @@
 //网络请求工具类
 #import "ZMHttpTool.h"
 
+//储存工具类
+#import "ZMSaveTools.h"
+
 #import "UIImage+Image.h"
 //打印
 /** 相当于log */
@@ -36,7 +39,7 @@
 // 常见问题Url
 #define FAQUrl @"http://onepay.kunleen.com/images/onepay/html/Coupon-FAQ.html"
 // 关于Url
-#define AboutUrl @"http://onepay.kunleen.com/images/onepay/html/about_coupon_3.html"
+#define AboutUrl @"http://onepay.kunleen.com/images/onepay/html/about_coupon_2.html"
 #define kSmallGray [UIColor colorWithRed:241.0/255.0 green:241.0/255.0 blue:241.0/255.0 alpha:1.0f]
 #define kSmallRed [UIColor colorWithRed:251.0/255.0 green:35.0/255.0 blue:67.0/255.0 alpha:1.0f]
 //#define kSmallGray [UIColor colorWithRed:240.0/255.0 green:241.0/255.0 blue:242.0/255.0 alpha:1.0f]

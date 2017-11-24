@@ -64,26 +64,26 @@
     [self addSubview:self.nameLabel];
 //    self.nameLabel = nameLabel;
     
+    // 之前价格
     UILabel *beforLabel = [[UILabel alloc]init];
     //    [beforLabel setText:[NSString stringWithFormat:@"¥%@",[_dataDic objectForKey:@"price"]]];
-    [beforLabel setText:[NSString stringWithFormat:@"¥%@",@"10000"]];
+    [beforLabel setText:[NSString stringWithFormat:@"¥%@",@"1000000"]];
     [beforLabel setFont:[UIFont systemFontOfSize:20]];
     [beforLabel sizeToFit];
     beforLabel.x = 10;
     beforLabel.centerY = kCICLYHEIGHT + 70;
     [self addSubview:beforLabel];
     self.beforLabel = beforLabel;
-    
+  
     UILabel *afterInfor = [[UILabel alloc]init];
     [afterInfor setText:@"实际券后价"];
     [afterInfor setFont:[UIFont systemFontOfSize:16]];
     [afterInfor sizeToFit];
     [afterInfor setTextColor:[UIColor lightGrayColor]];
-    afterInfor.x = beforLabel.x + beforLabel.width + 15;
+    afterInfor.x = beforLabel.x + beforLabel.width + 5;
     afterInfor.centerY = kCICLYHEIGHT + 70;
     [self addSubview:afterInfor];
-    
-    
+      // 之后价格
     UILabel *afterLabel = [[UILabel alloc]init];
     //    [afterLabel setText:[NSString stringWithFormat:@"¥%@",[_dataDic objectForKey:@"finalPrice"]]];
     [afterLabel setText:[NSString stringWithFormat:@"¥%@",@"10000"]];
@@ -94,7 +94,7 @@
     afterLabel.centerY = kCICLYHEIGHT + 70;
     [self addSubview:afterLabel];
     self.afterLabel = afterLabel;
-    
+      // 多少人购买
     UILabel *personLabel = [[UILabel alloc]init];
     //    [personLabel setText:[NSString stringWithFormat:@"月销%d件",[[_dataDic objectForKey:@"sellAmount"] intValue]]];
     [personLabel setText:[NSString stringWithFormat:@"月销%@件",@"10000"]];
@@ -121,8 +121,11 @@
     if (item) {
         self.nameLabel.text = item.itemName;
         self.afterLabel.text = [NSString stringWithFormat:@"¥%@", item.finalPrice];
+        [self.afterLabel sizeToFit];
         self.beforLabel.text = [NSString stringWithFormat:@"¥%@", item.price];
+         [self.beforLabel sizeToFit];
         self.personLabel.text = [NSString stringWithFormat:@"月销%@件",item.sellAmount];
+        [self.beforLabel sizeToFit];
         NSMutableArray *imageArr = [NSMutableArray arrayWithObject:item.itemImage];
         
 //        self.goodVC.webUrl
@@ -143,8 +146,11 @@
     if (todayItem) {
         self.nameLabel.text = todayItem.itemName;
         self.afterLabel.text = [NSString stringWithFormat:@"¥%@", todayItem.finalPrice];
+        [self.afterLabel sizeToFit];
         self.beforLabel.text = [NSString stringWithFormat:@"¥%@", todayItem.price];
+        [self.beforLabel sizeToFit];
         self.personLabel.text = [NSString stringWithFormat:@"月销%@件",todayItem.sellAmount];
+        [self.beforLabel sizeToFit];
         NSMutableArray *imageArr = [NSMutableArray arrayWithObject:todayItem.itemImage];
         [_infinitePageView setImagesArray:imageArr];
         // 移除元素

@@ -18,15 +18,33 @@
 #import <AlibcTradeSDK/AlibcTradeSDK.h>
 #import <SVProgressHUD.h>
 #import "ZMCollectViewController.h"
+#import "ZMButton.h"
+#import <MJExtension.h>
+#import "ZMTodayItem.h"
 @interface ZMProductViewController () <UITableViewDelegate, UITableViewDataSource >
 // 商品字典
 @property (nonatomic, strong) NSDictionary *goodDict;
 
 @property (nonatomic, strong) NSString *url;
+@property (nonatomic, strong) ZMButton *collectButton;
+
+
+@property (nonatomic,strong) NSMutableArray *toolArr;
+
+@property (nonatomic, strong) NSMutableArray *collectArr;
+// 判断是否重复添加数组
+@property (nonatomic, strong) NSMutableArray *reArr;
+// 取出判断是否重复添加数组
+@property (nonatomic, strong) NSArray *saveArr;
+
+// 热门商品的itemID
+@property (nonatomic, strong) NSString *itemID;
+
 
 @end
 
 @implementation ZMProductViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,6 +54,7 @@
     [self initValue];
     // 解析数据
     [self loadCarouselData];
+    
     // 设置背景
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -44,6 +63,30 @@
     [self setCollectButton];
     [self setBuyButton];
 //    [self createTableHeaderView];
+    self.saveArr = [ZMSaveTools objectForKey:@"toolID"];
+    if (_todayArr || _lotterArr) {
+   
+        for (int i = 0; i < self.saveArr.count; i++) {
+            
+            NSString *str = [[self.saveArr objectAtIndex:i] objectForKey:@"itemId"];
+            
+            if (str) {
+                NSLog(@"_itemId%@ ----- str%@",_itemId,str);
+                
+                if ([self.itemId isEqualToString:str]) {
+                    
+                    //        self.collectButton.selected = YES;
+                    [self.collectButton setTitle:@"已添加收藏" forState:UIControlStateNormal];
+                    [self.collectButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                    [self.collectButton setBackgroundImage:[UIImage imageNamed:@"shoucangBackgroundColor"] forState:UIControlStateNormal];
+                    self.collectButton.enabled = NO;
+                }
+            }
+        }
+        
+    }
+
+
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getNotification:) name:@"getUrl" object:nil];
 }
@@ -80,6 +123,9 @@
 - (void)initValue
 {
     self.goodDict = [NSDictionary dictionary];
+    
+    self.toolArr = [NSMutableArray array];
+    self.collectArr = [NSMutableArray array];
 }
 
 // nav返回事件
@@ -93,7 +139,7 @@
 {
     // 收藏
     ZMCollectViewController *collectVC = [[ZMCollectViewController alloc] init];
-    ZMWebNavigationController *collectNav = [[ZMWebNavigationController alloc] initWithRootViewController:collectVC];
+    UINavigationController *collectNav = [[UINavigationController alloc] initWithRootViewController:collectVC];
     collectVC.navigationItem.title = @"我的收藏";
     [self presentViewController:collectNav animated:YES completion:nil];
 }
@@ -102,19 +148,99 @@
 - (void)setCollectButton
 {
     CGFloat btnH = 64;
-    UIButton *collectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    ZMButton *collectBtn = [ZMButton buttonWithType:UIButtonTypeCustom];
+    
+//    collectBtn = [ZMSaveTools objectForKey:@"btn"];
+    
     [collectBtn setBackgroundColor:[UIColor whiteColor]];
     [collectBtn setTitle:@"添加收藏" forState:UIControlStateNormal];
     [collectBtn setTitleColor:kSmallRed forState:UIControlStateNormal];
+    
+    [collectBtn setTitle:@"已添加收藏" forState:UIControlStateSelected];
+    [collectBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    [collectBtn setBackgroundImage:[UIImage imageNamed:@"shoucangBackgroundColor"] forState:UIControlStateSelected];
     collectBtn.frame =CGRectMake(0, kDeviceHeight - 64, kDeviceWidth / 2, btnH);
-    [collectBtn addTarget:self action:@selector(didClickCollectBtn) forControlEvents:UIControlEventTouchUpInside];
+    [collectBtn addTarget:self action:@selector(didClickCollectBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:collectBtn];
+    
+    self.collectButton = collectBtn;
 }
 #pragma mark - 收藏按钮
-- (void)didClickCollectBtn
+- (void)didClickCollectBtn:(ZMButton *)btn
 {
-    [SVProgressHUD showSuccessWithStatus:@"添加成功了哦~"];
-    [SVProgressHUD dismissWithDelay:1];
+//    // 存放法
+//    + (nullable id)objectForKey:(NSString *_Nullable)defaultName;
+//
+//    //取方法
+//    + (void)setObject:(nullable id)value forKey:(NSString *_Nullable)defaultName;
+    
+    // 设置按钮
+    [self.collectButton setTitle:@"已添加收藏" forState:UIControlStateNormal];
+    [self.collectButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.collectButton setBackgroundImage:[UIImage imageNamed:@"shoucangBackgroundColor"] forState:UIControlStateNormal];
+    self.collectButton.enabled = NO;
+    btn.selected = YES;
+
+    // 判断今日优品
+    if (self.todayArr)
+    {
+        NSLog(@"%@",_todayArr);
+        ZMTodayItem *item = self.todayArr;
+        
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [dict setValue:item.itemName forKey:@"itemName"];
+        [dict setValue:item.itemImage forKey:@"itemImage"];
+        [dict setValue:item.finalPrice forKey:@"finalPrice"];
+        [dict setValue:item.price forKey:@"price"];
+        [dict setValue:item.itemId forKey:@"itemId"];
+        [dict setValue:item.promotionURL forKey:@"promotionURL"];
+        
+//        [self.collectArr addObject:dict];
+        [self.collectArr insertObject:dict atIndex:0];
+    }else if (self.lotterArr) // 判断分类
+    {
+        ZMTodayItem *item = self.lotterArr;
+        
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [dict setValue:item.itemName forKey:@"itemName"];
+        [dict setValue:item.itemImage forKey:@"itemImage"];
+        [dict setValue:item.finalPrice forKey:@"finalPrice"];
+        [dict setValue:item.price forKey:@"price"];
+        [dict setValue:item.itemId forKey:@"itemId"];
+        [dict setValue:item.promotionURL forKey:@"promotionURL"];
+
+//        [self.collectArr addObject:dict];
+        
+        [self.collectArr insertObject:dict atIndex:0];
+
+    }
+    else  {
+        self.collectArr = self.toolArr; // 判断热门
+
+    }
+    
+    
+    if(self.collectArr.count > 0)
+    {
+        NSDictionary *dataDic = [self.collectArr objectAtIndex:0];
+        
+        NSArray *arr1 = [ZMSaveTools objectForKey:@"toolID"];
+        if(arr1 == nil)
+        {
+            arr1 = [[NSArray alloc]init];
+        }
+        
+        self.reArr = [[NSMutableArray alloc]initWithArray:arr1];
+        [self.reArr addObject:dataDic];
+        
+        
+        arr1 = [[NSArray alloc]initWithArray:self.reArr];
+        
+        [ZMSaveTools setObject:arr1 forKey:@"toolID"];
+    }
+    
+    [SVProgressHUD showSuccessWithStatus:@"已经添加收藏了呦\n点击右上角小星星去管理吧~"];
+    [SVProgressHUD dismissWithDelay:1.5];
     ZMLOG(@"你点击了收藏按钮呦😯");
 }
 // 创建购买按钮
@@ -141,7 +267,7 @@
               ZMWebViewController *getVC = [[ZMWebViewController alloc] initWithWebView];
               getVC.title = @"领券中心";
               getVC.webUrl = self.url;
-              UINavigationController *getNav = [[UINavigationController alloc] initWithRootViewController:getVC];
+              ZMWebNavigationController *getNav = [[ZMWebNavigationController alloc] initWithRootViewController:getVC];
               
               [self presentViewController:getNav animated:YES completion:nil];
           }
@@ -174,6 +300,7 @@
 //    headView.own = self;
     headView.lotterArr = _lotterArr;
     headView.todayArr = _todayArr;
+
 //    [self createTableHeaderView];
 //    UIView *headView = [self createTableHeaderView];
     headView.frame = CGRectMake(0, -64, kDeviceWidth, kDeviceHeight);
@@ -221,7 +348,6 @@
 #pragma mark - 数据解析
 - (void)loadCarouselData
 {
-    
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:[NSNumber numberWithInt:4] forKey:@"query_type"];
     [parameters setValue:_toolID forKey:@"query_data"];
@@ -229,7 +355,28 @@
     [ZMHttpTool post:ZMItemUrl params:parameters success:^(id responseObj) {
 //        NSLog(@"%@",responseObj);
         self.goodDict = [responseObj valueForKey:@"item"];
-//        self.goodArr =
+        self.toolArr = [responseObj valueForKey:@"item"];
+        
+        self.saveArr = [ZMSaveTools objectForKey:@"toolID"];
+        
+        if (self.saveArr.count > 0) {
+            NSLog(@"%@",_toolID);
+        self.itemID = [[self.toolArr objectAtIndex:0] objectForKey:@"itemId"];
+            for (int i = 0; i < self.saveArr.count; i++) {
+                NSString *saveID = [[self.saveArr objectAtIndex:i] objectForKey:@"itemId"];
+                //        NSLog(@"%@",itemID);
+                if ([self.itemID isEqualToString:saveID]) {
+                    
+                    //        self.collectButton.selected = YES;
+                    [self.collectButton setTitle:@"已添加收藏" forState:UIControlStateNormal];
+                    [self.collectButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                    [self.collectButton setBackgroundImage:[UIImage imageNamed:@"shoucangBackgroundColor"] forState:UIControlStateNormal];
+                    self.collectButton.enabled = NO;
+                }
+            }
+        
+    }
+     
         NSDictionary *dict =[[NSDictionary alloc] initWithObjectsAndKeys:self.goodDict,@"goodDict",nil];
         
         //创建通知
