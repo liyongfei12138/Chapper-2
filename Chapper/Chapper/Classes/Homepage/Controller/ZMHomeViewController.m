@@ -71,11 +71,18 @@
 - (void)setUpTableView
 {
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kDeviceWidth, kDeviceHeight + 49 - 110) style:UITableViewStylePlain];
+    
+    // 适配iPhone X
+    if (IS_IPHONE_X) {
+        self.tableView.height -= 22;
+    }
+    
     self.tableView.backgroundColor = kSmallGray;
     self.tableView.showsHorizontalScrollIndicator = NO;
     self.tableView.showsVerticalScrollIndicator = NO;
     
     ZMHeadView *headView = [[ZMHeadView alloc] initWithFrame:CGRectMake(0, 0, kDeviceWidth, KCarouselHeight + KButtonHeight * 2 + collectedHeight + 60 + 100)];
+ 
     headView.backgroundColor = [UIColor redColor];
     headView.owner = self;
 //    headView.twoOwner = self;
@@ -90,6 +97,10 @@
 
     //创建hot页面
     ZMHotHeadView *hotView = [[ZMHotHeadView alloc] initWithFrame:CGRectMake(0, KCarouselHeight + KButtonHeight * 2 + 10 - 40, kDeviceWidth, collectedHeight)];
+    // 适配iPhoneX
+    if (IS_IPHONE_X) {
+        hotView.frame = CGRectMake(0, KCarouselHeight + KButtonHeight * 2 + 10 - 40 + 10, kDeviceWidth, collectedHeight);
+    }
     hotView.hotOwner = self;
     hotView.backgroundColor = [UIColor whiteColor];
     [headView addSubview:hotView];
@@ -200,6 +211,7 @@
 {
     
     UIView *tableSectionHeart = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kDeviceWidth, 30)];
+
     [tableSectionHeart setBackgroundColor:[UIColor whiteColor]];
     
     UIImageView* imageName = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"icon_jinriyp"]];

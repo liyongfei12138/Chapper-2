@@ -43,6 +43,11 @@
     //    NSArray* arr = [[NSArray alloc]initWithObjects:[_dataDic objectForKey:@"itemImage"], nil];
     NSArray *arr = [[NSArray alloc]initWithObjects:[UIImage imageNamed:@"loading"],nil];
     _infinitePageView = [BHInfiniteScrollView infiniteScrollViewWithFrame:CGRectMake(0, 0, kDeviceWidth, kDeviceWidth) Delegate:self ImagesArray:arr];
+    // 适配iPhone X
+    if (IS_IPHONE_X) {
+        _infinitePageView.y -= 24;
+//        _infinitePageView.
+    }
     //    _infinitePageView.isToolInfor = YES;
     //    _infinitePageView.pageControl.dotSize = 10;
     //    _infinitePageView.pageControlAlignmentOffset = CGSizeMake(0, 10);

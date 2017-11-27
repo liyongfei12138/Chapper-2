@@ -61,6 +61,9 @@
     // 设置启动图片的停留时间
     // 启动图片延时: 1秒
     [NSThread sleepForTimeInterval:1];
+    
+
+    
     return YES;
 }
 

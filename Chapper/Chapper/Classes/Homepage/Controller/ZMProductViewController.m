@@ -71,7 +71,6 @@
             NSString *str = [[self.saveArr objectAtIndex:i] objectForKey:@"itemId"];
             
             if (str) {
-                NSLog(@"_itemId%@ ----- str%@",_itemId,str);
                 
                 if ([self.itemId isEqualToString:str]) {
                     
@@ -168,11 +167,7 @@
 #pragma mark - 收藏按钮
 - (void)didClickCollectBtn:(ZMButton *)btn
 {
-//    // 存放法
-//    + (nullable id)objectForKey:(NSString *_Nullable)defaultName;
-//
-//    //取方法
-//    + (void)setObject:(nullable id)value forKey:(NSString *_Nullable)defaultName;
+
     
     // 设置按钮
     [self.collectButton setTitle:@"已添加收藏" forState:UIControlStateNormal];

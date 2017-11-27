@@ -29,11 +29,16 @@
     // 返回按钮
     UIButton *backBtn1 = [UIButton buttonWithType:UIButtonTypeCustom];
     backBtn1.frame = CGRectMake(20, 30, 40, 40);
-    backBtn1.centerY = self.navigationBar.centerY + 20;
+    
+    // 适配iPhone X
+    if (IS_IPHONE_X) {
+        backBtn1.y += 18;
+    }
     [backBtn1 setImage:[UIImage imageNamed:@"icon_xq_fanhui2.png"] forState:UIControlStateNormal];
     [backBtn1 sizeToFit];
     backBtn1.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 10);
     [self.view addSubview:backBtn1];
+
 //    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn1];
     
     [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"NavBar64white"] forBarMetrics:UIBarMetricsDefault];

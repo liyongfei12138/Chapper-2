@@ -70,7 +70,7 @@
     [collectionView setDataSource:self];
     
     //    _dataArr = [[NSMutableArray alloc]init];
-    collectionView.height = kDeviceHeight;
+    collectionView.height = kDeviceHeight - 64;
     
     //    [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
     

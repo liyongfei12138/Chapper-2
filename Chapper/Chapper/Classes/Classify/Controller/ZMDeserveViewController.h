@@ -10,7 +10,5 @@
 
 @interface ZMDeserveViewController : UIViewController
 
-@property (nonatomic,strong) UICollectionView *collectionView;
 
-@property (nonatomic, assign) NSInteger index;
 @end

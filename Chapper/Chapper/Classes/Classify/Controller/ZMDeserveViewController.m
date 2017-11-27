@@ -20,6 +20,10 @@
 // 商品Id 商品的唯一识别方式
 @property (nonatomic, strong) NSString *itemId;
 
+@property (nonatomic,strong) UICollectionView *collectionView;
+
+@property (nonatomic, assign) NSInteger index;
+
 @end
 
 @implementation ZMDeserveViewController
@@ -60,7 +64,7 @@
     layout.minimumLineSpacing = 0.5;
     [layout setSectionInset:UIEdgeInsetsMake(0.5, 0.5, 0.5, 0.5)];
     
-    UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, kDeviceWidth, kDeviceHeight) collectionViewLayout:layout];
+    UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, kDeviceWidth, kDeviceHeight - 64) collectionViewLayout:layout];
     layout.minimumInteritemSpacing = 0.5;
     layout.minimumLineSpacing = 0.5;
     [layout setSectionInset:UIEdgeInsetsMake(0.5, 0.5, 0.5, 0.5)];
@@ -71,8 +75,11 @@
     [collectionView setDataSource:self];
     
     //    _dataArr = [[NSMutableArray alloc]init];
-    collectionView.height = kDeviceHeight;
-    
+    collectionView.height = kDeviceHeight - 64;
+    // 适配iPhone X
+    if (IS_IPHONE_X) {
+        collectionView.height -= 22;
+    }
     //    [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
     
     MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadCarouselData)];

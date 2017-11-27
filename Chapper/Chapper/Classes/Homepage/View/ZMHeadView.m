@@ -61,6 +61,12 @@
     
     //[[UIView alloc] initWithFrame:CGRectMake(0, 0, kDeviceWidth, kDeviceWidth * 0.42 + kDeviceWidth * 0.25 * 1.11 +
     self.frame = CGRectMake(0, 0, kDeviceWidth, KCarouselHeight + KButtonHeight * 2 + collectedHeight + 60 - 40);
+    
+    // 适配iPhone X
+    if (IS_IPHONE_X) {
+        self.frame = CGRectMake(0, 0, kDeviceWidth, KCarouselHeight + KButtonHeight * 2 + collectedHeight + 60 - 40 + 10);
+    }
+    
     self.backgroundColor = kSmallGray;
     
     UIView *btnBactView = [[UIView alloc] initWithFrame:CGRectMake(0 , kDeviceWidth * 0.42, kDeviceWidth, KButtonHeight * 2 - 40)];
@@ -85,6 +91,10 @@
         [btn sizeToFit];
         if (i >= 5) {
               btn.frame = CGRectMake(kDeviceWidth * 0.2 * (i % 5) , KButtonHeight * (i / 5) - 25, kDeviceWidth * 0.2 - 1, KButtonHeight);
+            // 适配iPhone X
+            if (IS_IPHONE_X) {
+                btn.frame = CGRectMake(kDeviceWidth * 0.2 * (i % 5) , KButtonHeight * (i / 5) - 25 + 8, kDeviceWidth * 0.2 - 1, KButtonHeight);
+            }
         }
         [btn sizeToFit];
         [btnBactView addSubview:btn];

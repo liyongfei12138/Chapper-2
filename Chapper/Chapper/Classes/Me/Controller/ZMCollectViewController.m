@@ -93,19 +93,19 @@
     [backBtn1 sizeToFit];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn1];;
     
-//    backBtn1.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 10);
-//    [self.view addSubview:backBtn1];
+    backBtn1.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 10);
+    [self.view addSubview:backBtn1];
     
-//    UIButton *editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [editBtn.titleLabel setFont:[UIFont systemFontOfSize:16]];
-//    [editBtn setTitle:@"编辑" forState:UIControlStateNormal];
-//    [editBtn setTitleColor:kSmallRed forState:UIControlStateNormal];
-//
-//    [editBtn setTitle:@"完成" forState:UIControlStateSelected];
-//    [editBtn setTitleColor:kSmallRed forState:UIControlStateSelected];
-//    [editBtn addTarget:self action:@selector(clickEditBtn:) forControlEvents:UIControlEventTouchUpInside];
-//
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:editBtn];;
+    UIButton *editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [editBtn.titleLabel setFont:[UIFont systemFontOfSize:16]];
+    [editBtn setTitle:@"编辑" forState:UIControlStateNormal];
+    [editBtn setTitleColor:kSmallRed forState:UIControlStateNormal];
+
+    [editBtn setTitle:@"完成" forState:UIControlStateSelected];
+    [editBtn setTitleColor:kSmallRed forState:UIControlStateSelected];
+    [editBtn addTarget:self action:@selector(clickEditBtn:) forControlEvents:UIControlEventTouchUpInside];
+
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:editBtn];;
 }
 -(void)backBtn
 {
@@ -201,8 +201,9 @@
 // 点击编辑按钮
 - (void)clickEditBtn:(UIButton *)button
 {
-    NSArray* saveArr = [[NSArray alloc]initWithArray:self.data];
+    NSArray *saveArr = [[NSArray alloc]initWithArray:self.data];
     [ZMSaveTools setObject:saveArr forKey:@"toolID"];
+    
     
     [self.tableV reloadData];
     // 当刚开始编辑时或者完成编辑元素那一定不是全选
@@ -231,26 +232,33 @@
     self.buyCountLabel.text = [NSString stringWithFormat:@"已选中%lu件商品",self.selectArr.count];
     
     
+  
 }
 
 #pragma mark - 点击删除按钮
 - (void)clickRemoveBtn
 {
-    // 如果在收藏数组中包含选中的数组就移除收藏数组的这个元素
-    for (int i = 0; i < self.selectArr.count; i++) {
-        for (int j = 0; j < self.data.count; j++) {
-            if (self.selectArr[i] == self.data[j]) {
-                [self.data removeObject:self.data[j]];
-            }
-        }
-    }
-    // 编辑中选中数组清零
-    [self.selectArr removeAllObjects];
+    
+//    [self.data removeObjectsInArray:self.selectArr];
+//    [self.tableV reloadData];
 
-    self.buyCountLabel.text = [NSString stringWithFormat:@"已选中%d件商品",0];
+    
+//    NSString *str = [[self.selectArr objectAtIndex:0] objectForKey:@"itemId"];
+    [self.data removeObjectsInArray:self.selectArr];
+    
     [self.tableV reloadData];
     
+    
+    // 编辑中选中数组清零
+    [self.selectArr removeAllObjects];
+   
+    self.buyCountLabel.text = [NSString stringWithFormat:@"已选中%d件商品",0];
+//    [self.tableV reloadData];
+    
     self.allSelectBtn.selected = NO;
+    
+    NSArray *saveArr = [[NSArray alloc]initWithArray:self.data];
+    [ZMSaveTools setObject:saveArr forKey:@"toolID"];
 }
 #pragma mark - 点击全选按钮
 - (void)clickAllSelectBtn:(UIButton *)button
@@ -295,11 +303,12 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ZMCollectTableViewCell" owner:nil options:nil] lastObject];
 
     }
-    ZMCollectItem *item = self.itemArr[indexPath.row];
-    [cell.image sd_setImageWithURL:[NSURL URLWithString:item.itemImage]];
-    cell.afterPrice.text = item.finalPrice;
-    cell.beforPrice.text = item.price;
-    cell.name.text = item.itemName;
+
+    NSString *imStr = [[self.data objectAtIndex:indexPath.row] objectForKey:@"itemImage"];
+    [cell.image sd_setImageWithURL:[NSURL URLWithString:imStr]];
+    cell.afterPrice.text = [[self.data objectAtIndex:indexPath.row] objectForKey:@"finalPrice"];
+    cell.beforPrice.text = [[self.data objectAtIndex:indexPath.row] objectForKey:@"price"];
+    cell.name.text = [[self.data objectAtIndex:indexPath.row] objectForKey:@"itemName"];
     
     return cell;
 }
@@ -308,12 +317,18 @@
 // 选中时选中数组添加
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    
      ZMCollectItem *item = self.itemArr[indexPath.row];
     // 判断是否有选中状态
     if (_isSelect) {
         // 在编辑状态可以点击
 //        self.data[indexPath.row];
+//        NSInteger i = indexPath.row;
+//        NSString *str = [[self.data objectAtIndex:indexPath.row] objectForKey:@"itemId"];
         [self.selectArr addObject:[self.data objectAtIndex:indexPath.row]];
+//        [self.selectArr addObject:str];
+        NSLog(@"%@",self.selectArr);
         self.buyCountLabel.text = [NSString stringWithFormat:@"已选中%lu件商品",self.selectArr.count];
         
         // 判断如果数组个数相等为全选
@@ -370,6 +385,8 @@
     // 当移除元素那一定不是全选
     self.allSelectBtn.selected = NO;
     [self.selectArr removeObject:[self.data objectAtIndex:indexPath.row]];
+//    [self.selectArr removeObjectAtIndex:indexPath.row];
+    
     self.buyCountLabel.text = [NSString stringWithFormat:@"已选中%lu件商品",self.selectArr.count];
     
     
@@ -395,6 +412,7 @@
 //    [self.data removeObjectAtIndex:indexPath.row];
     
 //    if (editingStyle == UITableViewCellEditingStyleDelete) {
+
         [self.data removeObjectAtIndex:indexPath.row];
         [self.tableV deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     
@@ -421,9 +439,6 @@
     NSArray *saveArr = [[NSArray alloc]initWithArray:self.data];
     [ZMSaveTools setObject:saveArr forKey:@"toolID"];
 }
--(NSIndexPath *)tableView:(UITableView *)tableView willDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return indexPath;
-}
+
 
 @end

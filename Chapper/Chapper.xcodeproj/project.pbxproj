@@ -26,6 +26,7 @@
 		D81ED33A1FACB7A300D44A06 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = D81ED3391FACB7A300D44A06 /* UIView+Frame.m */; };
 		D82262431FB00A4600991649 /* ZMHotCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D82262411FB00A4600991649 /* ZMHotCollectionViewCell.m */; };
 		D82262441FB00A4600991649 /* ZMHotCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D82262421FB00A4600991649 /* ZMHotCollectionViewCell.xib */; };
+		D82DC42B1FCC131400244545 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D82DC42A1FCC131400244545 /* Images.xcassets */; };
 		D82DFD561FB2924100BCAA4A /* ZMHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D82DFD551FB2924100BCAA4A /* ZMHttpTool.m */; };
 		D82DFD5C1FB2DD7C00BCAA4A /* ZMProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D82DFD5B1FB2DD7C00BCAA4A /* ZMProductViewController.m */; };
 		D82DFD621FB2F33500BCAA4A /* UIImage+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = D82DFD611FB2F33400BCAA4A /* UIImage+Image.m */; };
@@ -63,6 +64,7 @@
 		D87760821FB1B63C00D44E6E /* ZMDetailItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D87760811FB1B63C00D44E6E /* ZMDetailItem.m */; };
 		D87760841FB1B6EA00D44E6E /* myMenu.plist in Resources */ = {isa = PBXBuildFile; fileRef = D87760831FB1B6E900D44E6E /* myMenu.plist */; };
 		D89486681FC29EDA0001DD9A /* ZMButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D89486671FC29EDA0001DD9A /* ZMButton.m */; };
+		D8A07A811FCBE41A00C3316E /* ZMBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8A07A801FCBE41A00C3316E /* ZMBaseViewController.m */; };
 		D8A4BB9A1FB59BCC00E4379D /* ZMTodayItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D8A4BB991FB59BCC00E4379D /* ZMTodayItem.m */; };
 		D8B9D2971FAB54D700521CE3 /* UIImage+ZMNavOriImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B9D2951FAB54D600521CE3 /* UIImage+ZMNavOriImage.m */; };
 		D8B9D29A1FAB55CA00521CE3 /* ZMMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B9D2991FAB55CA00521CE3 /* ZMMainTabBarController.m */; };
@@ -73,6 +75,7 @@
 		D8CF245F1FC2A66900345960 /* ZMSaleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CF245E1FC2A66900345960 /* ZMSaleViewController.m */; };
 		D8CF246B1FC2AEA000345960 /* ZMDeserveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CF246A1FC2AEA000345960 /* ZMDeserveViewController.m */; };
 		D8D5AD2B1FAD9F9A00BF0622 /* ZMHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D5AD2A1FAD9F9A00BF0622 /* ZMHeadView.m */; };
+		D8DD0A871FCC159D00A517AE /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8DD0A861FCC159D00A517AE /* Images-2.xcassets */; };
 		D8E8C1EA1FADA6590080AE42 /* ZMHotHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E8C1E91FADA6590080AE42 /* ZMHotHeadView.m */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +114,7 @@
 		D82262401FB00A4600991649 /* ZMHotCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZMHotCollectionViewCell.h; sourceTree = "<group>"; };
 		D82262411FB00A4600991649 /* ZMHotCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMHotCollectionViewCell.m; sourceTree = "<group>"; };
 		D82262421FB00A4600991649 /* ZMHotCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZMHotCollectionViewCell.xib; sourceTree = "<group>"; };
+		D82DC42A1FCC131400244545 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D82DFD541FB2924100BCAA4A /* ZMHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMHttpTool.h; sourceTree = "<group>"; };
 		D82DFD551FB2924100BCAA4A /* ZMHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMHttpTool.m; sourceTree = "<group>"; };
 		D82DFD5A1FB2DD7C00BCAA4A /* ZMProductViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZMProductViewController.h; sourceTree = "<group>"; };
@@ -181,6 +185,8 @@
 		D87760831FB1B6E900D44E6E /* myMenu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = myMenu.plist; sourceTree = "<group>"; };
 		D89486661FC29EDA0001DD9A /* ZMButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZMButton.h; sourceTree = "<group>"; };
 		D89486671FC29EDA0001DD9A /* ZMButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMButton.m; sourceTree = "<group>"; };
+		D8A07A7F1FCBE41A00C3316E /* ZMBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZMBaseViewController.h; sourceTree = "<group>"; };
+		D8A07A801FCBE41A00C3316E /* ZMBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMBaseViewController.m; sourceTree = "<group>"; };
 		D8A4BB981FB59BCC00E4379D /* ZMTodayItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZMTodayItem.h; sourceTree = "<group>"; };
 		D8A4BB991FB59BCC00E4379D /* ZMTodayItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMTodayItem.m; sourceTree = "<group>"; };
 		D8B9D2911FAB50A900521CE3 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -202,6 +208,7 @@
 		D8CF246A1FC2AEA000345960 /* ZMDeserveViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMDeserveViewController.m; sourceTree = "<group>"; };
 		D8D5AD291FAD9F9A00BF0622 /* ZMHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZMHeadView.h; sourceTree = "<group>"; };
 		D8D5AD2A1FAD9F9A00BF0622 /* ZMHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMHeadView.m; sourceTree = "<group>"; };
+		D8DD0A861FCC159D00A517AE /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
 		D8E8C1E81FADA6590080AE42 /* ZMHotHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZMHotHeadView.h; sourceTree = "<group>"; };
 		D8E8C1E91FADA6590080AE42 /* ZMHotHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMHotHeadView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -265,6 +272,8 @@
 				D81CF9CA1FAB18DE00A8D61F /* Info.plist */,
 				D87760831FB1B6E900D44E6E /* myMenu.plist */,
 				D81CF9CB1FAB18DE00A8D61F /* main.m */,
+				D82DC42A1FCC131400244545 /* Images.xcassets */,
+				D8DD0A861FCC159D00A517AE /* Images-2.xcassets */,
 			);
 			path = Chapper;
 			sourceTree = "<group>";
@@ -294,6 +303,8 @@
 		D81CF9D41FAB20CB00A8D61F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D8A07A7F1FCBE41A00C3316E /* ZMBaseViewController.h */,
+				D8A07A801FCBE41A00C3316E /* ZMBaseViewController.m */,
 				D8CF24691FC2AEA000345960 /* ZMDeserveViewController.h */,
 				D8CF246A1FC2AEA000345960 /* ZMDeserveViewController.m */,
 				D8CF245A1FC2A64B00345960 /* ZMTopViewController.h */,
@@ -662,6 +673,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D81CF9C91FAB18DE00A8D61F /* LaunchScreen.storyboard in Resources */,
+				D8DD0A871FCC159D00A517AE /* Images-2.xcassets in Resources */,
 				D82262441FB00A4600991649 /* ZMHotCollectionViewCell.xib in Resources */,
 				D85CBA021FB14BD90003ACF7 /* ZMTreatureCollectionViewCell.xib in Resources */,
 				D87760841FB1B6EA00D44E6E /* myMenu.plist in Resources */,
@@ -670,6 +682,7 @@
 				D80DD6D91FC67733004802F1 /* yw_1222.jpg in Resources */,
 				D87760791FB19A1100D44E6E /* ZMDetailTableViewCell.xib in Resources */,
 				D81185AE1FBEB29B00B43AF9 /* ZMChioceTableViewCell.xib in Resources */,
+				D82DC42B1FCC131400244545 /* Images.xcassets in Resources */,
 				D84960591FB9B22B00C5C4DB /* MJRefresh.bundle in Resources */,
 				D81CF9C41FAB18DE00A8D61F /* Main.storyboard in Resources */,
 			);
@@ -758,6 +771,7 @@
 				D8CF246B1FC2AEA000345960 /* ZMDeserveViewController.m in Sources */,
 				D81CF9E21FAB20CB00A8D61F /* AppDelegate.m in Sources */,
 				D849605B1FB9B22B00C5C4DB /* NSBundle+MJRefresh.m in Sources */,
+				D8A07A811FCBE41A00C3316E /* ZMBaseViewController.m in Sources */,
 				D8A4BB9A1FB59BCC00E4379D /* ZMTodayItem.m in Sources */,
 				D832B78D1FC51D7F0018B595 /* ZMCollectTableViewCell.m in Sources */,
 				D8CF245F1FC2A66900345960 /* ZMSaleViewController.m in Sources */,
@@ -929,6 +943,7 @@
 			baseConfigurationReference = 1BAFB4948DA20EB01FD3F47A /* Pods-Chapper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 827K684CMB;
 				ENABLE_BITCODE = NO;
@@ -1022,6 +1037,7 @@
 			baseConfigurationReference = 1E6A03668A6E6A32D236195A /* Pods-Chapper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 827K684CMB;
 				ENABLE_BITCODE = NO;
