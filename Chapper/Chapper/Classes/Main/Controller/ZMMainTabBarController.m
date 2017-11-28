@@ -10,15 +10,12 @@
 // **********
 
 #import "ZMMainTabBarController.h"
-
 #import "ZMHomeViewController.h"
-#import "ZMDeserveViewController.h"
 #import "ZMDetailViewController.h"
 #import "ZMMainNavigationController.h"
 #import "ZMHomeNavigationController.h"
 #import "ZMProductViewController.h"
-#import "ZMTopViewController.h"
-#import "ZMSaleViewController.h"
+#import "ZMBaseViewController.h"
 @interface ZMMainTabBarController ()
 
 @end
@@ -44,21 +41,26 @@
     [self tabBarWithViewController:homepageVC tabBarText:@"首页" textColor:kSmallRed];
 
    //创建超值9.9
-    ZMDeserveViewController *deserveVC = [[ZMDeserveViewController alloc] init];
+    ZMBaseViewController *deserveVC = [[ZMBaseViewController alloc] init];
+    deserveVC.queryData = @"10";
+    deserveVC.queryType = 5;
     //调用创建图片方法
     [self childViewController:deserveVC tabBarImage:[UIImage imageWithRandAsOriImagename:@"button_chaozhi1"] selImage:[UIImage imageWithRandAsOriImagename:@"button_chaozhi2"] title:@"超值9.9"];
     //调用修改tabBar选中状态颜色方
     [self tabBarWithViewController:deserveVC tabBarText:@"超值9.9" textColor:kSmallRed];
     
     //创建20元封顶
-    ZMTopViewController *topVC = [[ZMTopViewController alloc] init];
+    ZMBaseViewController *topVC = [[ZMBaseViewController alloc] init];
+    topVC.queryData = @"20";
+    topVC.queryType = 5;
     //调用创建图片方法
     [self childViewController:topVC tabBarImage:[UIImage imageWithRandAsOriImagename:@"button_fengding1"] selImage:[UIImage imageWithRandAsOriImagename:@"button_fengding2"] title:@"20元封顶"];
     //调用修改tabBar选中状态颜色方
     [self tabBarWithViewController:topVC tabBarText:@"20元封顶" textColor:kSmallRed];
     
     //创建超值畅销榜
-    ZMSaleViewController *saleVC = [[ZMSaleViewController alloc] init];
+    ZMBaseViewController *saleVC = [[ZMBaseViewController alloc] init];
+    saleVC.queryType = 6;
     //调用创建图片方法
     [self childViewController:saleVC tabBarImage:[UIImage imageWithRandAsOriImagename:@"button_changxiao1"] selImage:[UIImage imageWithRandAsOriImagename:@"button_changxiao2"] title:@"畅销榜"];
     //调用修改tabBar选中状态颜色方

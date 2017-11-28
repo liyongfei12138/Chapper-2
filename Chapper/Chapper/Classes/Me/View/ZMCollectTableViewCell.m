@@ -16,43 +16,24 @@
 }
 //
 -(void)layoutSubviews
-
 {
-    
     [super layoutSubviews];
-    
     for (UIControl *control in self.subviews){
-        
         if ([control isMemberOfClass:NSClassFromString(@"UITableViewCellEditControl")]){
-            
-            for (UIView *v in control.subviews)
-                
-            {
-                
+           for (UIView *v in control.subviews)
+           {
                 if ([v isKindOfClass: [UIImageView class]]) {
-                    
                     UIImageView *img=(UIImageView *)v;
-                    
                     if (self.selected) {
-                        
                         img.image=[UIImage imageNamed:@"button_xuanze2.png"];
-                        
                     }else
-                        
                     {
-                        
                         img.image=[UIImage imageNamed:@"button_xuanze1.png"];
-                        
                     }
-                    
                 }
-                
             }
-            
         }
-        
     }
-    
 }
 -(void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
 {

@@ -16,10 +16,6 @@
 #import <UIButton+WebCache.h>
 #import <SVProgressHUD.h>
 #import <MJExtension.h>
-//#import "ZMClassifyViewController.h"
-//#import "ZMFAQVC.h"
-#import "ZMDeserveViewController.h"
-//#import "ZMWebVC.h"
 #import "ZMWebViewController.h"
 #import "ZMWebViewController.h"
 #import "ZMWebNavigationController.h"
@@ -35,7 +31,6 @@
 @property (nonatomic, strong) NSMutableArray *infScroImagArr;
 
 @property (nonatomic, strong) BHInfiniteScrollView *infinitePageView;
-@property (nonatomic, strong) ZMDeserveViewController *btnVC;
 
 @property (nonatomic, strong) NSMutableArray *infinArr;
 

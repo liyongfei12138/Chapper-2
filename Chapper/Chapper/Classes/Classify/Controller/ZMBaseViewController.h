@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ZMBaseViewController : UIViewController
-
+//
+@property (nonatomic , strong) NSString *queryData;
+@property (nonatomic , assign) NSInteger queryType;
 @end
