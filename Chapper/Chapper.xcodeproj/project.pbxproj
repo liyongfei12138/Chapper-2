@@ -71,6 +71,7 @@
 		D8B9D2A31FAB595A00521CE3 /* ZMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B9D2A21FAB595A00521CE3 /* ZMDetailViewController.m */; };
 		D8B9D2A61FAB5BE300521CE3 /* ZMMainNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B9D2A51FAB5BE300521CE3 /* ZMMainNavigationController.m */; };
 		D8D5AD2B1FAD9F9A00BF0622 /* ZMHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D5AD2A1FAD9F9A00BF0622 /* ZMHeadView.m */; };
+		D8E4992B1FCD481C00FF2500 /* ZMNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E4992A1FCD481C00FF2500 /* ZMNoDataView.m */; };
 		D8E8C1EA1FADA6590080AE42 /* ZMHotHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E8C1E91FADA6590080AE42 /* ZMHotHeadView.m */; };
 /* End PBXBuildFile section */
 
@@ -196,6 +197,8 @@
 		D8B9D2A51FAB5BE300521CE3 /* ZMMainNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMMainNavigationController.m; sourceTree = "<group>"; };
 		D8D5AD291FAD9F9A00BF0622 /* ZMHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZMHeadView.h; sourceTree = "<group>"; };
 		D8D5AD2A1FAD9F9A00BF0622 /* ZMHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMHeadView.m; sourceTree = "<group>"; };
+		D8E499291FCD481C00FF2500 /* ZMNoDataView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZMNoDataView.h; sourceTree = "<group>"; };
+		D8E4992A1FCD481C00FF2500 /* ZMNoDataView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMNoDataView.m; sourceTree = "<group>"; };
 		D8E8C1E81FADA6590080AE42 /* ZMHotHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZMHotHeadView.h; sourceTree = "<group>"; };
 		D8E8C1E91FADA6590080AE42 /* ZMHotHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMHotHeadView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -415,6 +418,8 @@
 				D832B78A1FC51D7F0018B595 /* ZMCollectTableViewCell.h */,
 				D832B78B1FC51D7F0018B595 /* ZMCollectTableViewCell.m */,
 				D832B78C1FC51D7F0018B595 /* ZMCollectTableViewCell.xib */,
+				D8E499291FCD481C00FF2500 /* ZMNoDataView.h */,
+				D8E4992A1FCD481C00FF2500 /* ZMNoDataView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -770,6 +775,7 @@
 				D849605E1FB9B22B00C5C4DB /* UIView+MJExtension.m in Sources */,
 				D84960551FB9B22B00C5C4DB /* MJRefreshBackStateFooter.m in Sources */,
 				D8E8C1EA1FADA6590080AE42 /* ZMHotHeadView.m in Sources */,
+				D8E4992B1FCD481C00FF2500 /* ZMNoDataView.m in Sources */,
 				D81D840A1FABEDBC00901C2B /* UINavigationBar+Awesome.m in Sources */,
 				D84960511FB9B22B00C5C4DB /* MJRefreshAutoNormalFooter.m in Sources */,
 				D8B9D2971FAB54D700521CE3 /* UIImage+ZMNavOriImage.m in Sources */,

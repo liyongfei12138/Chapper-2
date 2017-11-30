@@ -55,7 +55,7 @@
     _infinitePageView.scrollTimeInterval = 0;
     _infinitePageView.delegate = self;
     
-    
+    // 添加商品图
     [self addSubview:_infinitePageView];
     
     self.nameLabel = [[UILabel alloc]init];

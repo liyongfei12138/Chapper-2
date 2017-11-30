@@ -76,6 +76,7 @@
     if (IS_IPHONE_X) {
         self.tableView.height -= 22;
     }
+
     
     self.tableView.backgroundColor = kSmallGray;
     self.tableView.showsHorizontalScrollIndicator = NO;

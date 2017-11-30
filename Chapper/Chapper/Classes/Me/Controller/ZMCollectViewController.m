@@ -21,6 +21,8 @@
 #import "ZMWebViewController.h"
 #import <AlibabaAuthSDK/ALBBSDK.h>
 #import <AlibcTradeSDK/AlibcTradeSDK.h>
+#import "ZMNoDataView.h"
+
 @interface ZMCollectViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableV;
 
@@ -45,6 +47,10 @@
 // 商品Id 商品的唯一识别方式
 @property (nonatomic, strong) NSString *itemId;
 
+// 没有收藏的页面
+@property (nonatomic, strong) ZMNoDataView *dataView;
+
+//@property (nonatomic, )
 @end
 
 @implementation ZMCollectViewController
@@ -62,6 +68,8 @@
     
     [self.data addObjectsFromArray:arr1];
 //    [self.data insertObject:arr1 atIndex:0];
+    
+   
     // 数组转换模型
 //     self.itemArr = [ZMCollectItem mj_objectArrayWithKeyValuesArray:self.data];
     self.itemArr = [ZMCollectItem mj_objectArrayWithKeyValuesArray:self.data];
@@ -72,13 +80,26 @@
     // 创建底部view
     [self setBottomView];
     
-    [self.tableV reloadData];
+    // 创建没有收藏的页面
+    ZMNoDataView *dataView = [[ZMNoDataView alloc] init];
+    dataView.frame = self.view.frame;
+    [self.tableV addSubview:dataView];
+    
+    self.dataView = dataView;
+    // 当没有收藏数据的收藏时显示
+    if (self.data.count == 0) {
+        // 判断没有收藏时创建没有收藏的view
+         dataView.hidden = NO;
+    }
+    
     // 当有数据时候显示提醒
     if (self.itemArr.count > 0) {
+        self.dataView.hidden = YES;
         [SVProgressHUD showImage:[UIImage imageNamed:@"zhuyi"] status:@"直接点击商品就可以领卷购买哟"];
         [SVProgressHUD dismissWithDelay:1.3];
     }
-   
+    
+      [self.tableV reloadData];
 }
 // 在页面将要显示时创建编辑按钮
 - (void)viewWillAppear:(BOOL)animated
@@ -232,6 +253,7 @@
     self.buyCountLabel.text = [NSString stringWithFormat:@"已选中%lu件商品",self.selectArr.count];
     
     
+
   
 }
 
@@ -245,6 +267,11 @@
     
 //    NSString *str = [[self.selectArr objectAtIndex:0] objectForKey:@"itemId"];
     [self.data removeObjectsInArray:self.selectArr];
+    // 当没有收藏数据的收藏时显示
+    if (self.data.count == 0) {
+        // 判断没有收藏时创建没有收藏的view
+        self.dataView.hidden = NO;
+    }
     
     [self.tableV reloadData];
     
@@ -259,6 +286,8 @@
     
     NSArray *saveArr = [[NSArray alloc]initWithArray:self.data];
     [ZMSaveTools setObject:saveArr forKey:@"toolID"];
+    
+
 }
 #pragma mark - 点击全选按钮
 - (void)clickAllSelectBtn:(UIButton *)button
@@ -413,9 +442,14 @@
     
 //    if (editingStyle == UITableViewCellEditingStyleDelete) {
 
+
         [self.data removeObjectAtIndex:indexPath.row];
         [self.tableV deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-    
+    // 当没有收藏数据的收藏时显示
+    if (self.data.count == 0) {
+        // 判断没有收藏时创建没有收藏的view
+        self.dataView.hidden = NO;
+    }
 //       [ZMSaveTools  setObject:self.itemArr forKey:@"removeID"];
 //    }
 }

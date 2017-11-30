@@ -41,7 +41,8 @@
     // 配置全局的淘客参数
     //如果没有阿里妈妈的淘客账号,setTaokeParams函数需要调用
     AlibcTradeTaokeParams *taokeParams = [[AlibcTradeTaokeParams alloc] init];
-    taokeParams.pid = @"mm_XXXXX"; //mm_XXXXX为你自己申请的阿里妈妈淘客pid
+    taokeParams.pid = @"mm_124530257_31350353_115428071"; //mm_XXXXX为你自己申请的阿里妈妈淘客pid
+    
     [[AlibcTradeSDK sharedInstance] setTaokeParams:taokeParams];
     
     //设置全局的app标识，在电商模块里等同于isv_code
@@ -53,7 +54,7 @@
     
     // 友盟
 //    5a162916f43e4861fd00012e
-    UMConfigInstance.appKey = @"5a162916f43e4861fd00012e";
+    UMConfigInstance.appKey = @"5965893fb27b0a5a560016d0";
     UMConfigInstance.channelId = @"App Store";
     
     [MobClick startWithConfigure:UMConfigInstance];

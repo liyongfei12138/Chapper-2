@@ -28,23 +28,18 @@
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) ZMButton *collectButton;
 
-
 @property (nonatomic,strong) NSMutableArray *toolArr;
-
 @property (nonatomic, strong) NSMutableArray *collectArr;
 // 判断是否重复添加数组
 @property (nonatomic, strong) NSMutableArray *reArr;
 // 取出判断是否重复添加数组
 @property (nonatomic, strong) NSArray *saveArr;
-
 // 热门商品的itemID
 @property (nonatomic, strong) NSString *itemID;
-
 
 @end
 
 @implementation ZMProductViewController
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -64,6 +59,7 @@
     [self setBuyButton];
 //    [self createTableHeaderView];
     self.saveArr = [ZMSaveTools objectForKey:@"toolID"];
+    // 判断传入数据之后判断收藏按钮能否点击
     if (_todayArr || _lotterArr) {
    
         for (int i = 0; i < self.saveArr.count; i++) {
@@ -84,11 +80,9 @@
         }
         
     }
-
-
-
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getNotification:) name:@"getUrl" object:nil];
 }
+// 代理方法
 - (void)getNotification:(NSNotification *)text
 {
     self.url = text.userInfo[@"urlDict"];
@@ -133,7 +127,7 @@
 //    [self.navigationController popToRootViewControllerAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-// nav收藏事件
+#pragma mark -  nav收藏事件
 - (void)collectBtn
 {
     // 收藏

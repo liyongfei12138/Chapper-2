@@ -63,9 +63,9 @@
     layout.minimumInteritemSpacing = 0.5;
     layout.minimumLineSpacing = 0.5;
     [layout setSectionInset:UIEdgeInsetsMake(0.5, 0.5, 0.5, 0.5)];
-    
-//    [collectionView setBackgroundColor:[UIColor whiteColor]];
     [collectionView setBackgroundColor:kSmallGray];
+    
+    // 设置代理
     [collectionView setDelegate:self];
     [collectionView setDataSource:self];
     

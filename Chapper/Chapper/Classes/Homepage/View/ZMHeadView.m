@@ -27,13 +27,13 @@
 /** 活动按钮数据数组**/
 @property (nonatomic, strong) NSMutableArray *acBtnDataArr;
 
-/** 轮播图**/
+/** 轮播图数组**/
 @property (nonatomic, strong) NSMutableArray *infScroImagArr;
-
+/** 轮播图**/
 @property (nonatomic, strong) BHInfiniteScrollView *infinitePageView;
 
 @property (nonatomic, strong) NSMutableArray *infinArr;
-
+// 按钮
 @property (nonatomic, strong) ZMActivityBtnViewController *imageVC;
 @end
 @implementation ZMHeadView
@@ -49,19 +49,18 @@
     
     // 初始化数据
     [self initValue];
-    // 初始化数据
-//    [self initValue];
-//    self.backgroundColor = [UIColor whiteColor];
-   
-    
-    //[[UIView alloc] initWithFrame:CGRectMake(0, 0, kDeviceWidth, kDeviceWidth * 0.42 + kDeviceWidth * 0.25 * 1.11 +
+   // 设置尺寸
     self.frame = CGRectMake(0, 0, kDeviceWidth, KCarouselHeight + KButtonHeight * 2 + collectedHeight + 60 - 40);
     
     // 适配iPhone X
     if (IS_IPHONE_X) {
         self.frame = CGRectMake(0, 0, kDeviceWidth, KCarouselHeight + KButtonHeight * 2 + collectedHeight + 60 - 40 + 10);
     }
-    
+    // 适配iPhone 5
+    if (IS_IPHONE_5) {
+        self.frame = CGRectMake(0, 0, kDeviceWidth, KCarouselHeight + KButtonHeight * 2 + collectedHeight + 60 - 40 + 10);
+    }
+    // 设置背景
     self.backgroundColor = kSmallGray;
     
     UIView *btnBactView = [[UIView alloc] initWithFrame:CGRectMake(0 , kDeviceWidth * 0.42, kDeviceWidth, KButtonHeight * 2 - 40)];
@@ -71,12 +70,12 @@
     // 设置Button
     for (int i = 0 ; i < 10; i++)
     {
-//        NSLog(@"%zd",);
-//        int count = i / 5;
+        // 自定义按钮让其按下无背景色
         ZMButton *btn = [ZMButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(kDeviceWidth * 0.2 * (i % 5) , KButtonHeight * (i / 5), kDeviceWidth * 0.2 - 1, KButtonHeight);
-//        btn.frame = CGRectMake(kDeviceWidth * 0.2 * (i % 5) , KButtonHeight * (i / 5), 0, 0);
+        // 绑定tag
         btn.tag = i;
+        // 添加监听
         [btn addTarget:self action:@selector(clickBtn:) forControlEvents:UIControlEventTouchUpInside];
         btn.backgroundColor = [UIColor redColor];
         int count = i + 1;
@@ -84,14 +83,24 @@
         UIImage *btnImage = [UIImage imageNamed:imageName];
         [btn setBackgroundImage:btnImage forState:UIControlStateNormal];
         [btn sizeToFit];
-        if (i >= 5) {
+        if (i >= 5) { // 当按钮超过五个时改变按钮Y值
               btn.frame = CGRectMake(kDeviceWidth * 0.2 * (i % 5) , KButtonHeight * (i / 5) - 25, kDeviceWidth * 0.2 - 1, KButtonHeight);
             // 适配iPhone X
             if (IS_IPHONE_X) {
                 btn.frame = CGRectMake(kDeviceWidth * 0.2 * (i % 5) , KButtonHeight * (i / 5) - 25 + 8, kDeviceWidth * 0.2 - 1, KButtonHeight);
             }
+            // 适配iPhone 5
+            if (IS_IPHONE_5) {
+                btn.frame = CGRectMake(kDeviceWidth * 0.2 * (i % 5) , KButtonHeight * (i / 5) - 25 + 8 + 5, kDeviceWidth * 0.2 - 1, KButtonHeight);
+            }
+//            NSLog(@"%lf",kDeviceHeight);
+            // 适配iPad
+            if (kDeviceHeight == 480) {
+                btn.frame = CGRectMake(kDeviceWidth * 0.2 * (i % 5) , KButtonHeight * (i / 5), kDeviceWidth * 0.2 - 1, KButtonHeight);
+            }
         }
         [btn sizeToFit];
+        // 添加按钮
         [btnBactView addSubview:btn];
 
 }
@@ -192,7 +201,7 @@
         [self.owner presentViewController:navBtn animated:YES completion:nil];
     }else if (type == 5)
     {
-        ZMWebViewController *webVC = [[ZMWebViewController alloc] init];
+        ZMWebViewController *webVC = [[ZMWebViewController alloc] initWithWebView];
         UINavigationController *navWeb = [[UINavigationController alloc] initWithRootViewController:webVC];
         [webVC.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"NavBar64white"] forBarMetrics:UIBarMetricsDefault];
         //        [imageVC.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"NavBar64white"] forBarMetrics:UIBarMetricsDefault];[imageVC.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"NavBar64white"] forBarMetrics:UIBarMetricsDefault];
