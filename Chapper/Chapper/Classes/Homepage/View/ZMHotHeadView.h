@@ -11,6 +11,7 @@
 @interface ZMHotHeadView : UIView
 
 @property (nonatomic,strong) UIViewController *hotOwner;
-
+// 数据模型数组
+@property (nonatomic, strong) NSMutableArray *hotArr;
 - (void)loadCarouselData;
 @end

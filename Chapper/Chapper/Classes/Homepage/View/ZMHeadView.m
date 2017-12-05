@@ -35,6 +35,7 @@
 @property (nonatomic, strong) NSMutableArray *infinArr;
 // 按钮
 @property (nonatomic, strong) ZMActivityBtnViewController *imageVC;
+@property (nonatomic, assign) BOOL isNo;
 @end
 @implementation ZMHeadView
 
@@ -60,6 +61,7 @@
     if (IS_IPHONE_5) {
         self.frame = CGRectMake(0, 0, kDeviceWidth, KCarouselHeight + KButtonHeight * 2 + collectedHeight + 60 - 40 + 10);
     }
+
     // 设置背景
     self.backgroundColor = kSmallGray;
     
@@ -107,7 +109,22 @@
     
     // 请求数据
     [self loadCarouselData];
+    // 接受通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notification:)name:@"notification" object:nil];
 
+    // 如果数据为NULL
+    if (_isNo) {
+        self.frame = CGRectMake(0, 0, kDeviceWidth, KCarouselHeight + KButtonHeight * 2 - 30);
+    }
+    
+}
+// 赋值
+- (void)notification:(NSNotification *)text{
+    
+    NSLog(@"%@",text.userInfo[@"hotArr"]);
+    
+    self.isNo = YES;
+    
 }
 // 设置轮播图
 - (UIView *)setUpScrollView
@@ -316,16 +333,41 @@
         
         [self.infScroImagArr removeAllObjects];
         // 轮播图数据
-        self.infinArr = [[responseObj objectAtIndex:0] objectForKey:@"carousels"];
-        
+        NSArray *infinArr = [[responseObj objectAtIndex:0] objectForKey:@"carousels"];
+        self.infinArr = [NSMutableArray arrayWithArray:infinArr];
         //添加数组
         for (int i = 0; i < self.infinArr.count; i ++) {
             NSString *infinUrl = [self.infinArr[i] objectForKey:@"carouselImage"];
 //            NSURL *url = [NSURL URLWithString:infinUrl];
             [self.infScroImagArr addObject:infinUrl];
         }
+        // 开关
+        // 获取开关
+        AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
         
-        [self.infinitePageView setImagesArray:_infScroImagArr];
+        //    [mgr setSecurityPolicy:securityPolicy];
+        
+        mgr.responseSerializer = [AFHTTPResponseSerializer serializer];
+        NSDictionary *dict = @{
+                               @"control":@"50001"
+                               };
+        [mgr POST:ZMSwitchUrl parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSLog(@"%@",responseObject);
+            Byte *testByte = (Byte *)[responseObject bytes];
+            NSString *str = [NSString stringWithFormat:@"%s",testByte];
+            CGFloat sw = [str floatValue];
+            //            self.sw = sw;
+            // 判断是否隐藏 0不隐藏 1 隐藏
+            if (sw == 1) {
+                [self.infScroImagArr removeObjectAtIndex:0];
+            }else{
+            }
+            [self.infinitePageView setImagesArray:_infScroImagArr];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            
+        }];
+
+        
         
 //        [header endRefreshing];
 

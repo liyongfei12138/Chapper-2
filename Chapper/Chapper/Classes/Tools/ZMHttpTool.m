@@ -29,12 +29,14 @@
 
     AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
 
+//    [mgr setSecurityPolicy:securityPolicy];
+    
     mgr.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
     mgr.responseSerializer = [AFJSONResponseSerializer serializer];
     mgr.requestSerializer = [AFJSONRequestSerializer serializer];
     [mgr.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [mgr.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    
+
    NSURLSessionDataTask *dataTask = [mgr POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
        
        if (success) {

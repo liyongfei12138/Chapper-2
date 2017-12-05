@@ -8,10 +8,18 @@
 
 #import "AppDelegate.h"
 #import <AlibcTradeSDK/AlibcTradeSDK.h>
-#import "ZMRootVCTools.h"
+//#import "ZMRootVCTools.h"
+#import "ZMMainTabBarController.h"
+#import "ZMADViewController.h"
 #import <UMMobClick/MobClick.h>
-@interface AppDelegate ()
+#import <JPUSHService.h>
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <UserNotifications/UserNotifications.h>
+#endif
+@interface AppDelegate ()<JPUSHRegisterDelegate>
 
+//@property (nonatomic, assign) CGFloat sw;
+@property (nonatomic, strong )UIViewController *vc;
 @end
 
 @implementation AppDelegate
@@ -19,12 +27,43 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
+//    UIViewController *vc = [[UIViewController alloc] init];
+    // 获取开关
+        AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
+        
+        //    [mgr setSecurityPolicy:securityPolicy];
+        
+        mgr.responseSerializer = [AFHTTPResponseSerializer serializer];
+        NSDictionary *dict = @{
+                               @"control":@"50001"
+                               };
+        [mgr POST:ZMSwitchUrl parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSLog(@"%@",responseObject);
+            Byte *testByte = (Byte *)[responseObject bytes];
+            NSString *str = [NSString stringWithFormat:@"%s",testByte];
+            CGFloat sw = [str floatValue];
+//            self.sw = sw;
+            // 判断是否隐藏 0不隐藏 1 隐藏
+            if (sw == 0) {
+                self.vc = [[ZMADViewController alloc] init];
+            }else{
+                self.vc = [[ZMMainTabBarController alloc] init];
+            }
+            self.window.rootViewController = self.vc;
+            [self.window makeKeyAndVisible];
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            // 当请求失败直接进如主页
+            self.vc = [[ZMMainTabBarController alloc] init];
+            self.window.rootViewController = self.vc;
+            [self.window makeKeyAndVisible];
+        }];
+
     //设置原始跟控制器
-    self.window.rootViewController = [ZMRootVCTools chooseWindowRootVC];
     
-    [self.window makeKeyAndVisible];
     
     // 百川平台基础SDK初始化，加载并初始化各个业务能力插件
     [[AlibcTradeSDK sharedInstance] asyncInitWithSuccess:^{
@@ -52,6 +91,33 @@
     // 设置全局配置，是否强制使用h5
     [[AlibcTradeSDK sharedInstance] setIsForceH5:NO];
     
+    // 极光推送
+    //Required
+    //notice: 3.0.0及以后版本注册可以这样写，也可以继续用之前的注册方式
+    JPUSHRegisterEntity *entity = [[JPUSHRegisterEntity alloc] init];
+    entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound;
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+        // 可以添加自定义categories
+        // NSSet<UNNotificationCategory *> *categories for iOS10 or later
+        // NSSet<UIUserNotificationCategory *> *categories for iOS8 and iOS9
+    }
+    [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
+    
+    // Optional
+    // 获取IDFA
+    // 如需使用IDFA功能请添加此代码并在初始化方法的advertisingIdentifier参数中填写对应值
+//    NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    
+    // Required
+    // init Push
+    // notice: 2.1.5版本的SDK新增的注册方法，改成可上报IDFA，如果没有使用IDFA直接传nil
+    // 如需继续使用pushConfig.plist文件声明appKey等配置内容，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化。
+    [JPUSHService setupWithOption:launchOptions appKey:@"9fd00ca066cc2fec78a11ed2"
+                          channel:@"App Store"
+                 apsForProduction:1
+            advertisingIdentifier:nil];
+    
+    
     // 友盟
 //    5a162916f43e4861fd00012e
     UMConfigInstance.appKey = @"5965893fb27b0a5a560016d0";
@@ -67,6 +133,20 @@
     
     return YES;
 }
+
+
+
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    
+    /// Required - 注册 DeviceToken
+    [JPUSHService registerDeviceToken:deviceToken];
+}
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    //Optional
+    NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
+}
+
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
     // 新接口写法

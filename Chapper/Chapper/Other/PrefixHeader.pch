@@ -32,6 +32,10 @@
 #define kDeviceHeight [UIScreen mainScreen].bounds.size.height
 // 主页数据
 #define ZMMainUrl @"https://taoboo.kunleen.com/coupon.webapi//api/deploy/carousel"
+//// 主页数据
+//#define ZMMainUrl @"http://192.168.1.50:8080/coupon.webapi/api/deploy/carousel"
+// 开关url
+#define ZMSwitchUrl @"http://119.90.40.95:8085/kingflower.webapi/api/deploy/pay_control"
 // hotkey数据
 #define ZMHotSearchUrl @"https://taoboo.kunleen.com/coupon.webapi/api/deploy/search_keyword"
 // 商品数据

@@ -17,8 +17,7 @@
 @interface ZMHotHeadView() <UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) UICollectionView *collectionView;
 
-// 数据模型数组
-@property (nonatomic, strong) NSMutableArray *hotArr;
+
 
 @end
 @implementation ZMHotHeadView
@@ -37,6 +36,7 @@
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 40, kDeviceWidth, collectedHeight) collectionViewLayout:layout];
 //    collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 30, kDeviceWidth, collectedHeight) collectionViewLayout:layout];
+
     [collectionView setBackgroundColor:[UIColor whiteColor]];
     //设置代理
     [collectionView setDelegate:self];
@@ -64,7 +64,13 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+//    if (self.hotArr.count == 0) {
+//        return CGSizeMake(0, 0);
+//    }else{
+//            return CGSizeMake((float)(kDeviceWidth) * 0.4 - 1,((float)(kDeviceWidth) * 0.4 - 0.5) / 4.0 * 5.0);
+//    }
     return CGSizeMake((float)(kDeviceWidth) * 0.4 - 1,((float)(kDeviceWidth) * 0.4 - 0.5) / 4.0 * 5.0);
+    
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -147,9 +153,25 @@
 - (void)loadCarouselData
 {
     [ZMHttpTool post:ZMMainUrl params:nil success:^(id responseObj) {
-        self.hotArr = [[responseObj objectAtIndex:2] objectForKey:@"carousels"];
-//                NSLog(@"%@",self.hotArr);
+        NSArray *hotArr = [NSArray array];
+        hotArr = [[responseObj objectAtIndex:2] objectForKey:@"carousels"];
+
+        [self.hotArr addObjectsFromArray:hotArr];
+//        [self.hotArr removeAllObjects];
+      
+        if (self.hotArr.count == 0) {
+            // 隐藏collectionView
+            self.collectionView.hidden = YES;
+            
+            NSDictionary *dict =[[NSDictionary alloc]initWithObjectsAndKeys:self.hotArr,@"hotArr",nil];
+            NSNotification *notification =[NSNotification notificationWithName:@"notification" object:nil userInfo:dict];
+            //通过通知中心发送通知
+            
+            [[NSNotificationCenter defaultCenter] postNotification:notification];
+        }
+        
         [self.collectionView reloadData];
+        
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];

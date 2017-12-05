@@ -31,6 +31,9 @@
 
 // 商品Id 商品的唯一识别方式
 @property (nonatomic, strong) NSString *itemId;
+
+@property (nonatomic, strong) ZMHeadView *headView;
+@property (nonatomic, strong) ZMHotHeadView *hotView;
 @end
 
 @implementation ZMHomeViewController
@@ -64,9 +67,18 @@
     self.view.backgroundColor = kSmallGray;
     // 创建tableview
     [self setUpTableView];
-
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notification:)name:@"notification" object:nil];
 }
+- (void)notification:(NSNotification *)text{
+    
+    NSLog(@"%@",text.userInfo[@"hotArr"]);
 
+//    self.tableView.hidden = YES
+    self.hotView.hidden = YES;
+    
+    self.headView.frame = CGRectMake(0, 0, kDeviceWidth, KCarouselHeight + KButtonHeight * 2 );
+}
 // 创建tableview
 - (void)setUpTableView
 {
@@ -88,6 +100,7 @@
     headView.owner = self;
 //    headView.twoOwner = self;
     [self.tableView setTableHeaderView:headView];
+    self.headView = headView;
 //    [self.tableView setRowHeight:kDeviceHeight];
     
 //    self.tableView.backgroundColor = [UIColor whiteColor];
@@ -98,6 +111,7 @@
 
     //创建hot页面
     ZMHotHeadView *hotView = [[ZMHotHeadView alloc] initWithFrame:CGRectMake(0, KCarouselHeight + KButtonHeight * 2 + 10 - 40, kDeviceWidth, collectedHeight)];
+//    CGFloat a = hotView.hotArr.count;
     // 适配iPhoneX
     if (IS_IPHONE_X) {
         hotView.frame = CGRectMake(0, KCarouselHeight + KButtonHeight * 2 + 10 - 40 + 10, kDeviceWidth, collectedHeight);
@@ -105,7 +119,8 @@
     hotView.hotOwner = self;
     hotView.backgroundColor = [UIColor whiteColor];
     [headView addSubview:hotView];
-
+    self.hotView = hotView;
+    
     //下拉刷新
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:
                                      ^{
@@ -215,7 +230,7 @@
 
     [tableSectionHeart setBackgroundColor:[UIColor whiteColor]];
     
-    UIImageView* imageName = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"icon_jinriyp"]];
+    UIImageView *imageName = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"icon_jinriyp"]];
     [imageName sizeToFit];
     imageName.x = 10;
     imageName.centerY = tableSectionHeart.height * 0.5;
